@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.keymap.set('n', '<leader>q', ':bp<bar>bd#<CR>', { noremap = true, silent = true })
 -- Source out nvim init.conf
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "Source init.lua" })
 
@@ -25,6 +26,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
   desc = "Yank also to Windows clipboard via clip.exe",
 })
--- vim.keymap.set("n", "<leader>fe", fzf.files, { noremap = true, silent = true, desc = "FZF: Find files" })
--- vim.keymap.set("n", "<leader>ff", fzf.buffers, { noremap = true, silent = true, desc = "FZF: Find buffers" })
 
