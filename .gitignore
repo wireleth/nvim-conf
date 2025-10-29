@@ -1,0 +1,19 @@
+# Lua / Neovim
+*.luac
+*.swp
+*.swo
+*.bak
+*.cache
+*.log
+
+# Node / TypeScript (if using)
+node_modules/
+dist/
+.env
+
+# Mac / Linux / Windows
+.DS_Store
+Thumbs.db
+
+# Vim / Neovim swap files
+*.sw?
