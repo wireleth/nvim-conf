@@ -109,9 +109,32 @@ vim.lsp.config("eslint", {
   end,
 })
 
+vim.lsp.config('prismals', {
+  cmd = { 'prisma-language-server', '--stdio' },
+  filetypes = { 'prisma' },
+  root_dir = function(fname)
+    return vim.fs.dirname(vim.fs.find({ 'schema.prisma' }, { upward = true })[1] or fname)
+  end,
+  settings = {
+    prisma = {
+      prismaFmtBinPath = "",  -- use default binary
+      trace = { server = "off" },
+    },
+  },
+  on_attach = function(client, bufnr)
+    -- Autoformat on save
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end,
+      })
+    end
+  end,
+})
 
+vim.lsp.enable('prismals')
+vim.lsp.enable('prismals')
 vim.lsp.enable('vtsls')
 vim.lsp.enable("vue_ls")
 vim.lsp.enable("eslint")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("prisma")
