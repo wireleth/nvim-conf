@@ -6,7 +6,6 @@ return {
 	},
 	config = function()
 		require("nvim-tree").setup {
-      adaptive_size = true,
       git = {
         enable = true,
         ignore = false,
